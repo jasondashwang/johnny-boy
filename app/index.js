@@ -1,39 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Header } from 'react-native-elements';
-
 import { createStore, applyMiddleware } from 'redux';
+import { createReactNavigationReduxMiddleware, reduxifyNavigator } from 'react-navigation-redux-helpers';
 import { Provider, connect } from 'react-redux';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
+import AppNavigation from './navigation/appNavigation';
 import reducer from './reducer';
+
+// Must be run before reduxify
+const navMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav,
+);
+
+const App = reduxifyNavigator(AppNavigation, 'root');
+
+const mapStateToProps = state => ({
+  state: state.nav,
+});
+
+const AppWithNavigationState = connect(mapStateToProps)(App);
 
 const client = axios.create({
   baseURL: 'http://127.0.0.1:5000',
   responseType: 'json',
 });
 
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+const middleware = [navMiddleware, axiosMiddleware(client)];
 
+const store = createStore(reducer, applyMiddleware(...middleware));
 
-export default class App extends React.Component {
+export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <Text>I love you Valeria</Text>
-        </View>
+        <AppWithNavigationState />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
