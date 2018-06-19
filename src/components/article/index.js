@@ -2,10 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class Article extends React.Component {
+
+  static navigationOptions = {
+    drawerLabel: 'Article',
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>I love you Valeria</Text>
+        <Text>Article Page</Text>
       </View>
     );
   }

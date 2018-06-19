@@ -5,8 +5,8 @@ import { Provider, connect } from 'react-redux';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
-import AppNavigation from './navigation/appNavigation';
-import reducer from './reducer';
+import AppNavigation from './src/navigation/appNavigation';
+import reducer from './src/reducer';
 
 // Must be run before reduxify
 const navMiddleware = createReactNavigationReduxMiddleware(
@@ -27,7 +27,7 @@ const client = axios.create({
   responseType: 'json',
 });
 
-const middleware = [navMiddleware, axiosMiddleware(client)];
+const middleware = [axiosMiddleware(client), navMiddleware];
 
 const store = createStore(reducer, applyMiddleware(...middleware));
 
