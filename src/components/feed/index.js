@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Header } from 'react-native-elements';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,17 +10,41 @@ const styles = StyleSheet.create({
   },
 });
 
+function ArticleCard(props) {
+  const { item } = props;
+
+  return (
+    <Text>{item.key}</Text>
+  );
+}
+
 
 export default class Feed extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      articles: [],
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
   static navigationOptions = {
     title: 'Feed',
   };
 
   render() {
+    const { articles } = this.state;
+
     return (
-      <View style={ styles.container }>
-        <Text>Feed Page</Text>
-      </View>
+      <FlatList
+        data={[{key: 'a'}, {key: 'b'}]}
+        renderItem={({item}) => <ArticleCard item={item} />}
+      />
     );
   }
 }
