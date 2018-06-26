@@ -19,10 +19,8 @@ export default class Feed extends React.Component {
 
   render() {
     return (
-      <View>
-        <View style={ styles.container }>
-          <Text>Feed Page</Text>
-        </View>
+      <View style={ styles.container }>
+        <Text>Feed Page</Text>
       </View>
     );
   }
