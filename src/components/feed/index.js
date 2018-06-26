@@ -12,22 +12,16 @@ const styles = StyleSheet.create({
 });
 
 
-export default class Article extends React.Component {
+export default class Feed extends React.Component {
   static navigationOptions = {
-    drawerLabel: 'Front Page',
+    title: 'Feed',
   };
 
   render() {
-    const { openDrawer } = this.props.navigation;
-
     return (
       <View>
-        <Header
-          leftComponent={{ icon: 'menu', color: '#fff', onPress: openDrawer }}
-          centerComponent={{ text: 'Front Page', style: { color: '#fff' } }}
-        />
         <View style={ styles.container }>
-          <Text>Front Page</Text>
+          <Text>Feed Page</Text>
         </View>
       </View>
     );

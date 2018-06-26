@@ -1,17 +1,14 @@
-import { DrawerNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import ArticleScreen from '../components/article';
-import FrontPageScreen from '../components/frontPage';
+import FeedScreen from '../components/feed';
 
-const Drawer = DrawerNavigator({
-  Article: {
-    screen: ArticleScreen,
-  },
-  FrontPage: {
-    screen: FrontPageScreen,
+const Navigator = StackNavigator({
+  Feed: {
+    screen: FeedScreen,
   },
 }, {
-  initialRouteName: 'FrontPage',
+  initialRouteName: 'Feed',
 });
 
 // Manifest of possible screens
-export default Drawer;
+export default Navigator;
