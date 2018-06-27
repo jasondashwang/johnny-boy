@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     padding: 20,
   },
+  item: {
+    fontSize: 14,
+    fontWeight: '300',
+    paddingTop: 5,
+  }
 });
 
 export default class SideBar extends React.Component {
@@ -52,7 +57,7 @@ export default class SideBar extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'SideBar',
+    title: 'News Feed',
   };
 
   render() {

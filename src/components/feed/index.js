@@ -33,10 +33,6 @@ export default class Feed extends React.Component {
 
   }
 
-  static navigationOptions = {
-    title: 'Feed',
-  };
-
   render() {
     const { articles } = this.state;
 
