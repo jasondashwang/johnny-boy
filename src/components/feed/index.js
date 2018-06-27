@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F5FCFF',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -41,10 +41,12 @@ export default class Feed extends React.Component {
     const { articles } = this.state;
 
     return (
-      <FlatList
-        data={[{key: 'a'}, {key: 'b'}]}
-        renderItem={({item}) => <ArticleCard item={item} />}
-      />
+      <View style={styles.container}>
+        <FlatList
+          data={[{key: 'a'}, {key: 'b'}]}
+          renderItem={({item}) => <ArticleCard item={item} />}
+        />
+      </View>
     );
   }
 }
