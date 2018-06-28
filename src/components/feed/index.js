@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
+// The feed item itself, will eventually navigate over to a new page (article component) to render entire thing
 function ArticleCard(props) {
   const { item } = props;
 
@@ -26,16 +27,18 @@ export default class Feed extends React.Component {
 
     this.state = {
       articles: [],
-    }
+    };
   }
 
   componentDidMount() {
-
+    // will call api to retrieve new articles and setState to it
   }
 
   render() {
     const { articles } = this.state;
+    const { filter } = this.props; // filter prop will be passed down from parent
 
+    // somehow also add a pull to refresh on flatlist
     return (
       <View style={styles.container}>
         <FlatList
